@@ -1,0 +1,19 @@
+{
+  "name": "fookie-cron",
+  "version": "1.0.0",
+  "description": "Cron job",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fookiejs/cron.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fookiejs/cron/issues"
+  },
+  "homepage": "https://github.com/fookiejs/cron#readme"
+}
