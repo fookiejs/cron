@@ -2,10 +2,10 @@ const job = require("./src/model/job")
 module.exports = async function (ctx) {
     await ctx.use(job)
 
-    setInterval(() => {
+    setInterval(async () => {
         let res = await ctx.run({
             system: true,
-            model: "jon",
+            model: "cron_job",
             method: "read",
             query: {
                 filter: {
@@ -18,7 +18,7 @@ module.exports = async function (ctx) {
             if (job.last_run + job.internal < Date.now()) {
                 await ctx.run({
                     system: true,
-                    model: "job",
+                    model: "cron_job",
                     method: "update",
                     query: {
                         filter: {
@@ -29,11 +29,11 @@ module.exports = async function (ctx) {
                         in_progress: true
                     }
                 })
-                ctx.lodash.defer(() => {
+                ctx.lodash.defer(async () => {
                     await job.function(ctx)
                     await ctx.run({
                         system: true,
-                        model: "job",
+                        model: "cron_job",
                         method: "update",
                         query: {
                             filter: {

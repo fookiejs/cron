@@ -1,6 +1,6 @@
 {
   "name": "fookie-cron",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Cron job",
   "main": "index.js",
   "scripts": {
