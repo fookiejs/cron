@@ -15,7 +15,7 @@ module.exports = async function (ctx) {
             }
         })
         for (let job of res.data) {
-            if (job.last_run + job.internal < Date.now()) {
+            if (job.last_run + job.interval < Date.now()) {
                 await ctx.run({
                     system: true,
                     model: "cron_job",

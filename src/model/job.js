@@ -11,19 +11,18 @@ module.exports = async function (ctx) {
             },
             description: {
                 type: "string",
-                required: true,
             },
             start: {
                 type: "number",
                 required: true,
-                default: 0
+                default: Date.now()
             },
             last_run: {
                 type: "number",
                 required: true,
                 default: 0
             },
-            internal: {
+            interval: {
                 type: "number",
                 required: true,
                 default: 1000
