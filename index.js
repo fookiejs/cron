@@ -4,7 +4,7 @@ module.exports = async function (ctx) {
 
     setInterval(async () => {
         let res = await ctx.run({
-            system: true,
+            token: true,
             model: "cron_job",
             method: "read",
             query: {
@@ -17,7 +17,7 @@ module.exports = async function (ctx) {
         for (let job of res.data) {
             if (job.last_run + job.interval < Date.now()) {
                 await ctx.run({
-                    system: true,
+                    token: true,
                     model: "cron_job",
                     method: "update",
                     query: {
@@ -32,7 +32,7 @@ module.exports = async function (ctx) {
                 ctx.lodash.defer(async () => {
                     await job.function(ctx)
                     await ctx.run({
-                        system: true,
+                        token: true,
                         model: "cron_job",
                         method: "update",
                         query: {
